@@ -1,0 +1,76 @@
+create database project2;
+use project2;
+
+CREATE TABLE Librarians (
+    Librarian_ID INT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Hire_Date DATE NOT NULL
+);
+
+
+CREATE TABLE Reservations (
+    Reservation_ID INT PRIMARY KEY,
+    Member_ID INT NOT NULL,
+    Book_ID INT NOT NULL,
+    Reservation_Date DATE NOT NULL,
+    Status VARCHAR(20) CHECK (Status IN ('Pending','Fulfilled','Cancelled'))
+);
+
+CREATE TABLE Fines (
+    Fine_ID INT PRIMARY KEY,
+    Borrow_ID INT NOT NULL,
+    Fine_Amount DECIMAL(8,2) NOT NULL,
+    Paid_Status VARCHAR(10) CHECK (Paid_Status IN ('Paid','Unpaid'))
+);
+
+INSERT INTO Librarians (Librarian_ID, Name, Hire_Date) VALUES
+(1, 'Rohan sharma', '2019-01-12'),
+(2, 'Sonia Kapoor', '2020-04-20'),
+(3, 'Rajeev', '2021-07-15'),
+(4, 'Shreya Nair', '2018-09-05'),
+(5, 'Priya Sharma', '2022-02-18'),
+(6, 'Margret', '2020-11-11'),
+(7, 'Keshav', '2021-05-22'),
+(8, 'Ananya', '2017-12-30'),
+(9, 'Krishna', '2019-06-17'),
+(10, 'Subham ', '2023-03-25');
+
+INSERT INTO Reservations (Reservation_ID, Member_ID, Book_ID, Reservation_Date, Status) VALUES
+(101, 11, 2001, '2023-09-01', 'Pending'),
+(102, 15, 2005, '2023-09-02', 'Fulfilled'),
+(103, 18, 2010, '2023-09-03', 'Cancelled'),
+(104, 21, 2022, '2023-09-04', 'Pending'),
+(105, 25, 2031, '2023-09-05', 'Fulfilled'),
+(106, 28, 2044, '2023-09-06', 'Pending'),
+(107, 30, 2050, '2023-09-07', 'Cancelled'),
+(108, 34, 2066, '2023-09-08', 'Fulfilled'),
+(109, 37, 2072, '2023-09-09', 'Pending'),
+(110, 40, 2088, '2023-09-10', 'Fulfilled'),
+(111, 42, 2095, '2023-09-11', 'Pending'),
+(112, 45, 2102, '2023-09-12', 'Fulfilled'),
+(113, 48, 2119, '2023-09-13', 'Cancelled'),
+(114, 50, 2125, '2023-09-14', 'Pending'),
+(115, 53, 2138, '2023-09-15', 'Fulfilled'),
+(116, 56, 2146, '2023-09-16', 'Pending'),
+(117, 59, 2154, '2023-09-17', 'Cancelled'),
+(118, 61, 2169, '2023-09-18', 'Fulfilled'),
+(119, 65, 2175, '2023-09-19', 'Pending'),
+(120, 68, 2188, '2023-09-20', 'Fulfilled');
+
+
+INSERT INTO Fines (Fine_ID, Borrow_ID, Fine_Amount, Paid_Status) VALUES
+(201, 301, 120.50, 'Paid'),
+(202, 305, 75.00, 'Unpaid'),
+(203, 309, 45.25, 'Paid'),
+(204, 312, 200.00, 'Unpaid'),
+(205, 318, 60.75, 'Paid'),
+(206, 320, 90.00, 'Unpaid'),
+(207, 324, 150.00, 'Paid'),
+(208, 327, 110.25, 'Unpaid'),
+(209, 330, 35.50, 'Paid'),
+(210, 333, 80.00, 'Unpaid'),
+(211, 337, 140.40, 'Paid'),
+(212, 340, 55.00, 'Unpaid'),
+(213, 343, 99.99, 'Paid'),
+(214, 346, 185.75, 'Unpaid'),
+(215, 350, 210.00, 'Paid');
